@@ -20,7 +20,7 @@ public class CadastroClienteService {
     public Cliente save(Cliente cliente) {
         Cliente clienteExistente = clienteRepository.findByEmail(cliente.getEmail());
         if (clienteExistente != null && !clienteExistente.equals(cliente)) {
-            throw new NegocioException("Já existe cliente cadastrado com este e-mail");
+            throw new NegocioException("Já existe cliente cadastrado com este e-mail: " + cliente.getEmail());
         }
         return clienteRepository.save(cliente);
     }
